@@ -1,0 +1,37 @@
+:root{
+    --cloud-delay: -1s;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background-color: #0083d4;
+}
+
+svg{
+    display: block;
+    margin: 0 auto;
+    max-height: 80vh;
+    max-width: 80vmin;
+}
+
+.cloud {
+    transform: translateX(0);
+    animation: cloud-animation 30s linear infinite ;
+    animation-delay: var(--cloud-delay);
+    
+}
+
+
+@keyframes cloud-animation {
+        
+    100%{
+        transform: translateX(-780px);
+    }
+  }
