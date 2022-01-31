@@ -1,0 +1,135 @@
+:root{
+    --cloud-delay: -1s;
+    --scale-x: 1;
+
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background-color: #0083d4;
+}
+
+svg{
+    display: block;
+    margin: 0 auto;
+    max-height: 100vh;
+    max-width: 100vmin;
+    pointer-events: none;
+}
+
+.cloud {
+    transform: translateX(0);
+    animation: cloud-animation 30s linear infinite ;
+    animation-delay: var(--cloud-delay);
+    
+}
+
+@keyframes cloud-animation {
+    100%{
+        transform: translateX(-780px);
+    }
+}
+
+  /*
+  Blinking Animation for Eyes
+  */
+
+  .eye{
+     transform: scaleY(1);
+      animation: blink 5s infinite;
+      animation-timing-function: step-end;
+  }
+
+  @keyframes blink { 
+    10%, 30% {
+        transform: scaleY(0);
+    }
+    11%, 31% {
+        transform: scaleY(1);
+    }
+  }
+
+  .front #face-side{ 
+    display: none;
+  }
+
+
+.sideways{
+    display: none;
+}
+
+.running .figure{
+        animation: running-body 0.25s infinite linear;
+        transform: translateY(-4px)
+}
+.running .sideways{
+    display: block;    
+}
+.right .sideways{
+    transform: scaleX(-1);
+}
+
+.running .face, 
+.running .buttons{
+    display: none;
+}
+
+.scarf{
+    transform-origin: 0 -30px ;
+    transform:  rotate(5deg) ;
+    animation: bouncing-scarf 0.25s infinite ease-in-out
+}
+.scarf+.scarf{
+    animation-delay: -0.025s
+}
+
+.foot{
+    transform: rotate(0) translateX(10px);
+}
+.foot+.foot{
+    transform: rotate(0) translateX(-10px);
+}
+
+.running .foot{
+    animation: running-feet 0.5s infinite linear;
+}
+
+.running .foot+.foot{
+    animation-delay: -0.25s 
+}
+
+@keyframes bouncing-scarf {
+     50%{
+        transform: rotate(25deg)
+     }    
+}
+
+@keyframes running-body {
+    0%, 100%{
+        transform: translateY(0)
+     }
+     50%{
+        transform: translateY(-8px)
+     }    
+}
+
+ @keyframes running-feet{
+     0%, 100%{
+        transform: rotate(0deg)
+     }
+
+     25%{
+        transform: rotate(60deg)
+     }
+
+     75%{
+        transform: rotate(-60deg)
+     }
+ }
