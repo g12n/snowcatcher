@@ -33,7 +33,6 @@ document.addEventListener('keydown', handleKeyDown);
 document.addEventListener('keyup', handleKeyUp);
 document.addEventListener('mousedown', handleMouseDown);
 document.addEventListener('mouseup', handleKeyUp);
-
 document.addEventListener('touchstart', handleTouchStart);
 document.addEventListener('touchend', handleKeyUp);
 
@@ -54,10 +53,8 @@ function handleMouseDown(e) {
 }
 
 function handleTouchStart(e) {
-    
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     let pos = e.touches[0].pageX/vw;
-
     if(pos >= 0.5){
         runRight()
     } else{

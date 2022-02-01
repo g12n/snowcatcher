@@ -15,8 +15,7 @@
             <path class="cloud" style="--cloud-delay: -12s" d="M 600 100 a 10 10 0 0 1 20 -30, 25 40 0 0 1 50 30, 15 40 0 0 1 30 -30 , 20 30 10 0 1 30 30"  fill="url(#cloud-gradient)"/>
             <path class="cloud" style="--cloud-delay: -23s" d="M 600 200 a 20 40 0 0 1 40 -30, 35 60 0 0 1 80 30, 15 40 0 0 1 30 -30 , 20 30 10 0 1 30 30"  fill="url(#cloud-gradient)"/>
         </g>
-
-        <g id="player" class="running" transform="translate(300,700)" >
+        <g id="player" class="standing" transform="translate(300,700)" >
             <g class="figure">
                 <path class="foot" d="M-12 21 a 12 14 0 0 1 24 0 Z" fill="#46468F" stroke="#3A3A78" stroke-width="2"/>
                 <path class="foot" d="M-12 21 a 12 14 0 0 1 24 0 Z" fill="#46468F" stroke="#3A3A78" stroke-width="2"/>
@@ -37,13 +36,11 @@
                 <rect id="neck" x="-15" y="-37" width="30" height="10" rx="5.5" fill="#4BA0C9" stroke="#16729E" stroke-width="2"/>
             </g>
         </g>
-
         <defs>
             <linearGradient id="cloud-gradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0.5" stop-color="#fff"/>
                 <stop offset="1" stop-color="#fff" stop-opacity="0"/>
             </linearGradient>
-
             <linearGradient id="background-gradient" x1="0" y1="0" x2="0" y2="1" >
                 <stop stop-color="#62AADE"/>
                 <stop offset="0.76346" stop-color="#F8FBFE"/>
@@ -52,6 +49,7 @@
             </linearGradient>
         </defs>
     </svg>
+    <script src="./game.js"></script>
 </body>
 </html>
 
