@@ -4,8 +4,6 @@ class WinterChimes {
 			window.webkitAudioContext)();
 		this.masterGain = this.audioContext.createGain();
 		this.masterGain.connect(this.audioContext.destination);
-
-		// Set initial volume to 15%
 		this.masterGain.gain.value = 0.05;
 
 		this.notes = [
@@ -25,7 +23,6 @@ class WinterChimes {
 	}
 
 	setVolume(value) {
-		// value should be between 0 and 1
 		this.masterGain.gain.value = value;
 	}
 
@@ -34,37 +31,29 @@ class WinterChimes {
 		const gainNode = this.audioContext.createGain();
 		const filter = this.audioContext.createBiquadFilter();
 
-		// Connect the nodes - now through masterGain
 		oscillator.connect(filter);
 		filter.connect(gainNode);
 		gainNode.connect(this.masterGain);
 
-		// Bell-like sound settings
 		oscillator.type = "sine";
 		oscillator.frequency.value = frequency;
-
 		filter.type = "lowpass";
 		filter.frequency.value = 1000;
 
-		// Reduced initial volume to 10% (0.1)
 		gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
 		gainNode.gain.exponentialRampToValueAtTime(
 			0.001,
-			this.audioContext.currentTime + 4
+			this.audioContext.currentTime + 2
 		);
 
 		oscillator.start(this.audioContext.currentTime);
-		oscillator.stop(this.audioContext.currentTime + 3);
+		oscillator.stop(this.audioContext.currentTime + 2);
 	}
 
-	playRandomNote() {
-		// Randomly select 1-3 notes to play together
-		const numberOfNotes = Math.floor(Math.random() * 1) + 1;
-		for (let i = 0; i < numberOfNotes; i++) {
-			const randomNote =
-				this.notes[Math.floor(Math.random() * this.notes.length)];
-			this.createBellSound(randomNote);
-		}
+	playNote() {
+		const randomNote =
+			this.notes[Math.floor(Math.random() * this.notes.length)];
+		this.createBellSound(randomNote);
 	}
 
 	scheduler() {
@@ -72,20 +61,16 @@ class WinterChimes {
 			this.nextNoteTime <
 			this.audioContext.currentTime + this.scheduleAheadTime
 		) {
-			const randomDelay = 0.5 + Math.random() * 1.5;
-
 			setTimeout(
-				() => this.playRandomNote(),
+				() => this.playNote(),
 				(this.nextNoteTime - this.audioContext.currentTime) * 1000
 			);
-
-			this.nextNoteTime += randomDelay;
+			this.nextNoteTime += 0.25; // Fixed interval of 0.25 seconds
 		}
 	}
 
 	start() {
 		if (this.isPlaying) return;
-
 		this.isPlaying = true;
 		this.nextNoteTime = this.audioContext.currentTime;
 		this.intervalId = setInterval(() => this.scheduler(), 100);
@@ -93,7 +78,6 @@ class WinterChimes {
 
 	stop() {
 		if (!this.isPlaying) return;
-
 		this.isPlaying = false;
 		clearInterval(this.intervalId);
 	}
@@ -102,17 +86,14 @@ class WinterChimes {
 // Usage example
 const chimes = new WinterChimes();
 
-// Start button event listener
 document.getElementById("startButton")?.addEventListener("click", () => {
 	chimes.start();
 });
 
-// Stop button event listener
 document.getElementById("stopButton")?.addEventListener("click", () => {
 	chimes.stop();
 });
 
-// Volume control example
 document.getElementById("volumeSlider")?.addEventListener("input", (e) => {
 	chimes.setVolume(parseFloat(e.target.value));
 });
