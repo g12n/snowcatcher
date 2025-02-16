@@ -38,16 +38,16 @@ class WinterChimes {
 		oscillator.type = "sine";
 		oscillator.frequency.value = frequency;
 		filter.type = "lowpass";
-		filter.frequency.value = 1000;
+		filter.frequency.value = 300 + Math.random() * 500;
 
-		gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
+		gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
 		gainNode.gain.exponentialRampToValueAtTime(
 			0.001,
 			this.audioContext.currentTime + 2
 		);
 
 		oscillator.start(this.audioContext.currentTime);
-		oscillator.stop(this.audioContext.currentTime + 2);
+		oscillator.stop(this.audioContext.currentTime + 4);
 	}
 
 	playNote() {
