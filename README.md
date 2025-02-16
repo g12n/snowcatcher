@@ -1,12 +1,12 @@
-# Snowcatcher 2022
+# Snowcatcher
 
-Recreating a flash game with modern techology.
+## Recreating a Flash Game with Modern Technology
 
-In 2002 I had the odacity to call myself a flash professional and somebody payed me to write a few articles for them. In one of them i taught how to create a little flash game. Celebrating the progress the web has made and the nostalgia of early web browser games lets recreate this one in modern technology.
 
-Rules:
-Theres only one rule: No build skripts or frameworks. It's very liberating that the browser now gives us everything we need to create. Frameworks often get in the way of that.
+In 2002, I had the audacity to call myself a Flash professional, and someone paid me to write a few articles. In one of them, I taught readers how to create a simple Flash game. Now, as we celebrate both the web's progress and the nostalgia of early browser games, I'm going to recreate this project using modern technology.
 
-Resources:
+While the original code is lost to time—a common fate for Flash content—this gives us a fresh start with current web standards. I'll follow just one rule: No build scripts or frameworks. Modern browsers provide all the native capabilities we need, making external tools often unnecessary. This back-to-basics approach is surprisingly liberating, letting us focus on pure web technologies while hopefully creating more maintainable, longer-lasting code.
+
+## Resources:
 
 - https://www.sarasoueidan.com/blog/structuring-grouping-referencing-in-svg/
