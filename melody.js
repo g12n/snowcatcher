@@ -1,6 +1,7 @@
-
 /**
- * 
+ * @summary small custom element that plays a winter chimes melody
+ * @cssState playing - the melody is playing
+ * @tagname winter-chimes
  */
 
 class WinterChimes extends HTMLElement {
@@ -31,7 +32,6 @@ class WinterChimes extends HTMLElement {
 	}
 
 	connectedCallback() {
-		
 		this.addEventListener("command", (event) => {
 			if (event.command === "--start") {
 				this.start();
@@ -40,8 +40,8 @@ class WinterChimes extends HTMLElement {
 			}
 		});
 	}
-	disconnetedCallback() {
-
+	disconnectedCallback() {
+		this.stop();
 	}
 
 	setVolume(value) {
@@ -65,7 +65,7 @@ class WinterChimes extends HTMLElement {
 		gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
 		gainNode.gain.exponentialRampToValueAtTime(
 			0.001,
-			this.audioContext.currentTime + 2
+			this.audioContext.currentTime + 4
 		);
 
 		oscillator.start(this.audioContext.currentTime);
@@ -100,7 +100,6 @@ class WinterChimes extends HTMLElement {
 	}
 
 	stop() {
-		
 		this._internals.states.delete("playing");
 		if (!this.isPlaying) return;
 		this.isPlaying = false;

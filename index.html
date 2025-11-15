@@ -9,18 +9,16 @@
 	</head>
 	<body>
 
-		<winter-chimes id="melody">
+		<winter-chimes id="melody"> </winter-chimes>
+		<button commandfor="melody" command="--start">start melody</button>
+		<button commandfor="melody" command="--stop">stop melody</button>
 
-		</winter-chimes>
 
-<button commandfor="melody" command="--start">start melody</button>
-<button commandfor="melody" command="--stop">stop melody</button>
-
-<script
-  type="module"
-  async
-  src="https://unpkg.com/invokers-polyfill@latest/invoker.min.js"
-></script>
+		<script
+			type="module"
+			async
+			src="https://unpkg.com/invokers-polyfill@latest/invoker.min.js"
+		></script>
 
 		<svg viewBox="0 0 600 750" id="game">
 			<rect width="600" height="750" fill="url(#background-gradient)" />
