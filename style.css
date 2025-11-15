@@ -125,3 +125,27 @@ svg {
 		transform: rotate(-60deg);
 	}
 }
+
+
+winter-chimes{
+	display: block;
+	padding: 10px;
+	background-color: #234;
+	border-radius: 20px;
+}
+winter-chimes:defined{
+	background-color: #456;
+}
+winter-chimes:state(playing){
+	background-color: #789;
+}
+
+winter-chimes:state(playing) ~ [command="--start"]{
+	display: none;
+}
+winter-chimes ~ [command="--stop"]{
+	display: none;
+}
+winter-chimes:state(playing) ~ [command="--stop"]{
+	display: block;
+}

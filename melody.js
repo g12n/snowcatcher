@@ -1,5 +1,13 @@
-class WinterChimes {
+
+/**
+ * 
+ */
+
+class WinterChimes extends HTMLElement {
 	constructor() {
+		super();
+		this._internals = this.attachInternals();
+
 		this.audioContext = new (window.AudioContext ||
 			window.webkitAudioContext)();
 		this.masterGain = this.audioContext.createGain();
@@ -20,6 +28,20 @@ class WinterChimes {
 		this.nextNoteTime = 0;
 		this.scheduleAheadTime = 0.1;
 		this.intervalId = null;
+	}
+
+	connectedCallback() {
+		
+		this.addEventListener("command", (event) => {
+			if (event.command === "--start") {
+				this.start();
+			} else if (event.command === "--stop") {
+				this.stop();
+			}
+		});
+	}
+	disconnetedCallback() {
+
 	}
 
 	setVolume(value) {
@@ -71,29 +93,19 @@ class WinterChimes {
 
 	start() {
 		if (this.isPlaying) return;
+		this._internals.states.add("playing");
 		this.isPlaying = true;
 		this.nextNoteTime = this.audioContext.currentTime;
 		this.intervalId = setInterval(() => this.scheduler(), 100);
 	}
 
 	stop() {
+		
+		this._internals.states.delete("playing");
 		if (!this.isPlaying) return;
 		this.isPlaying = false;
 		clearInterval(this.intervalId);
 	}
 }
 
-// Usage example
-const chimes = new WinterChimes();
-
-document.getElementById("startButton")?.addEventListener("click", () => {
-	chimes.start();
-});
-
-document.getElementById("stopButton")?.addEventListener("click", () => {
-	chimes.stop();
-});
-
-document.getElementById("volumeSlider")?.addEventListener("input", (e) => {
-	chimes.setVolume(parseFloat(e.target.value));
-});
+customElements.define("winter-chimes", WinterChimes);

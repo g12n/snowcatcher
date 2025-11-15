@@ -8,8 +8,14 @@
 		<link rel="stylesheet" href="style.css?v=001" />
 	</head>
 	<body>
-		<button type="button" id="startButton">start melody</button>
-		<button type="button" id="stopButton">stop melody</button>
+
+		<winter-chimes id="melody">
+
+		</winter-chimes>
+
+<button commandfor="melody" command="--start">start melody</button>
+<button commandfor="melody" command="--stop">stop melody</button>
+
 
 		<svg viewBox="0 0 600 750" id="game">
 			<rect width="600" height="750" fill="url(#background-gradient)" />
@@ -149,6 +155,6 @@
 			</defs>
 		</svg>
 		<script src="./game.js"></script>
-		<script src="./melody.js"></script>
+		<script type="module" src="./melody.js"></script>
 	</body>
 </html>
