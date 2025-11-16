@@ -12,7 +12,6 @@ var intervalID = setInterval(()=>{
     playerItem.setAttribute("transform", `translate(${x} 710)`)
 },10);
 
-
 let runLeft = () =>{
     playerItem.setAttribute("class", "running ")
     playerVelocity = -2;

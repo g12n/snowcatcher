@@ -8,11 +8,9 @@
 		<link rel="stylesheet" href="style.css?v=001" />
 	</head>
 	<body>
-
-		<winter-chimes id="melody"> </winter-chimes>
+		<winter-chimes id="melody" melody="C D E G A c d e"></winter-chimes>
 		<button commandfor="melody" command="--start">start melody</button>
 		<button commandfor="melody" command="--stop">stop melody</button>
-
 
 		<script
 			type="module"
@@ -21,8 +19,32 @@
 		></script>
 
 		<svg viewBox="0 0 600 750" id="game">
+			<g clip-path="url(#cut-off-bottom)">
 			<rect width="600" height="750" fill="url(#background-gradient)" />
-			<g class="clouds">
+<path d="M60 0 q40,80,0,160t0 160 0 160 0 160 
+		m120 -640 q40,80,0,160t0 160 0 160 0 160 
+		m120 -640 q40,80,0,160t0 160 0 160 0 160 
+		m120 -840 q40,80,0,160t0 160 0 160 0 160 
+		m120 -640 q40,80,0,160t0 160 0 160 0 160
+		m120 -640 q40,80,0,160t0 160 0 160 0 160" 
+        stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 80"
+        fill="none"  opacity="0.4">
+		<animate attributeName="stroke-dashoffset" to="-80" dur="2s" begin="-0.9s" repeatCount="indefinite" />
+    </path>
+<path d="M10 -13 q40,80,0,160t0 160 0 160 0 160 
+		m120 -640 q40,80,0,160t0 160 0 160 0 160 
+		m120 -660 q40,80,0,160t0 160 0 160 0 160 
+		m120 -640 q40,80,0,160t0 160 0 160 0 160 
+		m120 -640 q40,80,0,160t0 160 0 160 0 160
+		m120 -640 q40,80,0,160t0 160 0 160 0 160 " 
+        stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 123"
+        fill="none"  opacity="2">
+		<animate attributeName="stroke-dashoffset" to="-123" dur="2s" begin="-0.9s" repeatCount="indefinite" />
+    </path>
+
+
+
+			<g class="clouds" >
 				<path
 					class="cloud"
 					d="M 600 300 a 20 40 0 0 1 40 -30, 35 60 0 0 1 80 30, 15 40 0 0 1 30 -30 , 20 30 10 0 1 30 30"
@@ -144,7 +166,11 @@
 					/>
 				</g>
 			</g>
+			</g>
 			<defs>
+				<clipPath id="cut-off-bottom">
+      				<rect x="0" y="0" width="600" height="750" rx="20" ry="20" />
+    			</clipPath>
 				<linearGradient id="cloud-gradient" x1="0" y1="0" x2="0" y2="1">
 					<stop offset="0.5" stop-color="#fff" />
 					<stop offset="1" stop-color="#fff" stop-opacity="0" />

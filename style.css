@@ -21,7 +21,8 @@ svg {
 	max-height: 80vh;
 	max-width: 80vmin;
 	pointer-events: none;
-	border-radius: 1em;
+	
+	overflow: hidden;
 }
 
 .cloud {
